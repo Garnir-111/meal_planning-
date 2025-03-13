@@ -1,3 +1,3 @@
-document.getElementById("myButton").addEventListener("click", function() {
+document.getElementById("menubutton").addEventListener("click", function() {
     window.location.href = "testsite/recipe.html";
   });

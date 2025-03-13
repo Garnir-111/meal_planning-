@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for, request, redirect
+#UNRELATED FILE: IGNORE
+'''from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -64,4 +65,5 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 with app.app_context():
-    db.create_all()
+    db.create_all()'
+    '''

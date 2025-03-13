@@ -5,36 +5,27 @@
 {% endblock %}
 
 {% block body %}
-<div class="content">
-    <h1 style="text-align: center">Task Master</h1>
-    {% if tasks|length < 1 %}
-    <h4 style="text-align: center">There are no tasks. Create one below!</h4>
-    {% else %}
-    <table>
-        <tr>
-            <th>Task</th>
-            <th>Added</th>
-            <th>Actions</th>
-        </tr>
-        {% for task in tasks %}
-            <tr>
-                <td>{{ task.content }}</td>
-                <td>{{ task.date_created.date() }}</td>
-                <td>
-                    <a href="/delete/{{task.id}}">Delete</a>
-                    <br>
-                    <a href="/update/{{task.id}}">Update</a>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
+    <form method="POST">
+        <input type="text" name="search" placeholder="Search by ingredient..." value="{{ search_query }}">
+        <button type="submit">Search</button>
+    </form>
 
-    <div class="form">
-        <form action="/" method="POST">
-            <input type="text" name="content" id="content">
-            <input type="submit" value="Add Task">
-        </form>
-    </div>
-</div>
+    {% if recipes %}
+        <h2>Resulting Recipes</h2>
+        <ul>
+            {% for recipe in recipes %}
+            <li>
+                <strong>{{ recipe["name"] }}</strong><br>
+                Ingredients:
+                <ul>
+                    {% for ingredient in recipe["ingredients"] %}
+                    <li>{{ ingredient["name"] }} - {{ ingredient["quantity"] }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found</p>
+    {% endif %}
 {% endblock %}

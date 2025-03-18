@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Find A Recipe</title>
-</head>
-<body>
-    <div class="recipe-container">
-        <div class="recipe-card" data-id="1">
-          <h3>Grilled Chicken Salad</h3>
-          <p>Click to view recipe</p>
-        </div>
-    
-        <div class="recipe-card" data-id="2">
-          <h3>Quinoa Avocado Bowl</h3>
-          <p>Click to view recipe</p>
-        </div>
-    
-        <div id="recipe-detail" class="recipe-detail hidden"></div>
-      </div>
 
-    
-=======
-    <title>Document</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe</title>
+  <script type="module" src="recipes.js" defer></script>
 </head>
+
 <body>
-<<<<<<< HEAD
-    <button id="menubutton">REcipes</button>
->>>>>>> 2d43032fe6b0586ef368f2e7d841b18d2b6c89ac
-=======
-    <button id="menubutton">Recipes</button>
->>>>>>> 6d7cbd94b93e7718760a056cf4be95c4042e0d75
+  <header>
+    <div>
+      <h1 id="site-title">RECIPES</h1>
+    </div>
+
+    <button onclick="window.location.href='filters.html'">Open Filters</button>
+
+
+    <search>
+      <form action="" class="search-box">
+        <input type="text" placeholder="Find a recipe" />
+        <button type="submit"><img src="images/search.svg" alt="Search" class="search-button"></button>
+      </form>
+    </search>
+  </header>
+
+  <main>
+    <div id="recipe-output"></div>
+  </main>
 </body>
+
 </html>

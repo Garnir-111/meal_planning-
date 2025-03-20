@@ -5,13 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./filters.js" defer></script>
     <title>Document</title>
     <link rel="stylesheet" href="filters.css">
 
 </head>
 <body>
     <header>
-        <button type="button" class="apply">Back</button>
+        <button type="button">Back</button>
         <h1>Filters</h1>
     </header>
     <main>
@@ -19,19 +20,21 @@
             <fieldset class="priceRange">
                 <h2>Price</h2>
                 <label for="minPrice">Min Price</label>
-                <input type="range" id="minPrice" min="1" max="100" step="10" value="1">
+                <input name = "min" type="range" id="minPrice" min="0" max="100" step="10" value="10">
                 <label for="maxPrice">Max Price</label>
-                <input type="range" id="maxPrice" min="1" max="100" step="10" value="1">
+                <input name = "max" type="range" id="maxPrice" min="0" max="100" step="10" value="10">
                 <p id="currentPriceRange"></p>
             </fieldset>
             <fieldset class="include">
                 <h2>Include</h2>
-                <input type="checkbox" name="chocolate" id="chocolate">
+                <input type="checkbox" name="include" id="chocolate" class="include">
                 <label for="chocolate">Chocolate</label>
+                <input type="checkbox" name="include" id="beans" class="include">
+                <label for="beans">Beans</label>
             </fieldset>
             <fieldset class="exclude">
                 <h2>Exclude</h2>
-                <input type="checkbox" name="gluten" id="gluten">
+                <input type="checkbox" name="exclude" id="gluten" class="exclude">
                 <label for="gluten">Gluten</label>
             </fieldset>
             <button type="submit" class="apply">Apply</button>

@@ -21,7 +21,8 @@ body {
     background: grey;
 }
 header {
-    background: green;
+    background: #CC6C6C;
+    
 }
 #filterbuttoncontainer {
     background: orange;

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Link to the manifest file (ChatGPT) -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="food.css">
+ 
+    <!-- Our service worker registration (ChatGPT) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+            .then(() => console.log("Service Worker Registered"))
+            .catch(error => console.log("Service Worker Failed", error));
+        }
+    </script>
+</head>
+<body class="body">
+    <div>
+        <img src="imgs/Designer_See_through_Big.png" alt="Logo image">
+    </div>
+    <h1 class="h1">Hello world!</h1>
+    <h2>I like turtlez</h2>
+    <p>Stop playing with me</p>
+    <p>Jonathan wants to say hello</p>
+    <h4>:\</h4>
+    <button>Submit</button>
+
+
+    <!-- Install button brought to you by ChatGPT -->
+
+    <button id="install-btn" hidden>Install App</button>
+
+    <script>
+        let deferredPrompt;
+
+        window.addEventListener("beforeinstallprompt", (event) => {
+            event.preventDefault();
+            deferredPrompt = event;
+            document.getElementById("install-btn").hidden = false;
+        });
+
+        document.getElementById("install-btn").addEventListener("click", () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === "accepted") {
+                        console.log("User installed the PWA");
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        });
+
+        window.addEventListener("appinstalled", () => {
+            console.log("PWA was installed");
+            document.getElementById("install-btn").hidden = true;
+        });
+    </script>
+</body>
+</html>

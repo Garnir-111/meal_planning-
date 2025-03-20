@@ -10,11 +10,11 @@
 </head>
 <body>
     <header>
-        <button type="button" class="apply">Back</button>
+        <button type="button">Back</button>
         <h1>Filters</h1>
     </header>
     <main>
-        <form  method="GET" action="./index.html">
+        <form>
             <fieldset class="priceRange">
                 <h2>Price</h2>
                 <label for="minPrice">Min Price</label>
@@ -25,12 +25,14 @@
             </fieldset>
             <fieldset class="include">
                 <h2>Include</h2>
-                <input type="checkbox" name="chocolate" id="chocolate">
+                <input type="checkbox" name="include" id="chocolate" class="include">
                 <label for="chocolate">Chocolate</label>
+                <input type="checkbox" name="include" id="beans" class="include">
+                <label for="beans">Beans</label>
             </fieldset>
             <fieldset class="exclude">
                 <h2>Exclude</h2>
-                <input type="checkbox" name="gluten" id="gluten">
+                <input type="checkbox" name="exclude" id="gluten" class="exclude">
                 <label for="gluten">Gluten</label>
             </fieldset>
             <button type="submit" class="apply">Apply</button>

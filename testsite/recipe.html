@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe</title>
+  <script type="module" src="recipes.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div>
+      <h1 id="site-title">RECIPES</h1>
+    </div>
+
+    <button onclick="window.location.href='filters.html'">Open Filters</button>
+
+
+    <search>
+      <form action="" class="search-box">
+        <input type="text" placeholder="Find a recipe" />
+        <button type="submit"><img src="images/search.svg" alt="Search" class="search-button"></button>
+      </form>
+    </search>
+  </header>
+
+  <main>
+    <div id="recipe-output"></div>
+  </main>
+</body>
+
+</html>

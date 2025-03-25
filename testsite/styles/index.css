@@ -24,19 +24,48 @@ h1, h2, h3, h4, h5 {
 body {
     max-width: 1600px;
     margin: 0 auto;
-    background: grey;
+    background: grey;    
 }
 header {
-    background: #CC6C6C;
-    
+    background: green;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
-#filterbuttoncontainer {
-    background: orange;
+nav h1 {
+    text-align: center;
 }
-#content {
-    background: red;
+.logo {
+    width: 150px;
 }
 
+#filterbuttoncontainer {
+    background: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#content {
+    background: red;    
+}
+#content h1 {
+    text-align: center;
+}
+#content h2 {
+    text-align: center;
+}
+#heading3 {
+    text-align: center;
+}
+.instruct {
+    padding-left: 500px;
+    padding-right: 500px;
+    text-align: left;
+}
 footer {
     background: white;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 25px;
+    padding-right: 25px;
 }

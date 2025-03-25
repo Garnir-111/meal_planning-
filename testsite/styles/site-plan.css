@@ -40,11 +40,18 @@ body {
 img {
   display: block;
   margin: 0 auto;
+  width: 600px;
+  height: auto;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--heading-font);
   color: var(--headline-color-on-white);
 }
+
+h3 {
+  color: #CC6C6C;
+}
+
 h2 {
   text-align: center;
 }
@@ -63,11 +70,17 @@ header > h1, header > h2 {
   color: var(--headline-color-on-color);
 }
 
-p {
+p, p1 {
   font-family: var(--paragraph-font);
   color: var(--paragraph-color-on-white);
   padding: 1em;
 }
+
+p1 {
+  font-family: var(--paragraph-font);
+  color: red
+}
+
 .colors {
   width: 100%;
   table-layout: fixed; /* Ensures equal column widths */

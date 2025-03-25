@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Playwrite+GB+J:ital,wght@0,100..400;1,100..400&display=swap'); 
+p {
+    font-family: "Playwrite GB J";
+}
+h1, h2, h3, h4, h5 {
+    font-family: "Faculty Glyphic";
+}
 .menu {
     display: none;
     position: absolute;
@@ -12,7 +19,6 @@
 }
 .logo {
     width: 150px;
-
 }
 
 body {

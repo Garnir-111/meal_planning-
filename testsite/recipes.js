@@ -19,6 +19,15 @@ function recipeTemplate(recipe) {
       <div class="recipe">
         <h2 class="recipe-title">${recipe.name}</h2>
           <p class="recipe-paragraph">
+            Ingredients: ${recipe.ingredients.join(', ')}
+          </p>
+          <p class="recipe-time">
+            Time: ${recipe.time}
+          </p>
+          <p class="recipe-category">
+            Category: ${recipe.category} 
+          </p>
+          <p class="recipe-description">
             ${recipe.description}
           </p>
       </div>
@@ -29,9 +38,11 @@ function recipeTemplate(recipe) {
 function filterRecipes(query) {
   return recipes.filter(recipe => {
       return recipe.name.toLowerCase().includes(query) || 
-             recipe.ingredients.join(' ').toLowerCase().includes(query);
+             recipe.ingredients.join(' ').toLowerCase().includes(query) ||
+             recipe.category.toLowerCase().includes(query);
   });
 }
+
 
 
   function renderRecipes(recipeList) {

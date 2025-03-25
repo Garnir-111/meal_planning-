@@ -10,27 +10,3 @@
 .menu.show {
     display: block;
 }
-.logo {
-    width: 150px;
-
-}
-
-body {
-    max-width: 1600px;
-    margin: 0 auto;
-    background: grey;
-}
-header {
-    background: #CC6C6C;
-    
-}
-#filterbuttoncontainer {
-    background: orange;
-}
-#content {
-    background: red;
-}
-
-footer {
-    background: white;
-}

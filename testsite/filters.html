@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./filters.js" defer></script>
     <title>Document</title>
-    <link rel="stylesheet" href="filters.css">
+    <link rel="stylesheet" href="styles/filters.css">
 
 </head>
 <body>
     <header>
-        <button type="button">Back</button>
+        <button class="apply" type="button">Back</button>
         <h1>Filters</h1>
     </header>
     <main>
@@ -25,6 +25,15 @@
                 <label for="maxPrice">Max Price</label>
                 <input name = "max" type="range" id="maxPrice" min="0" max="100" step="10" value="10">
                 <p id="currentPriceRange"></p>
+            </fieldset>
+            <fieldset class="macros">
+                <h2>Macros</h2>
+                <label for="carbs">Carbohydrates</label>
+                <input name="carbs" type="range" id="carbs" min="0" max="400" step="10" value="0">
+                <label for="proteins">proteins</label>
+                <input name="proteins" type="range" id="proteins" min="0" max="200" step="10" value="0">
+                <label for="fats">Fats</label>
+                <input name="fats" type="range" id="fats" min="0" max="100" step="10" value="0">
             </fieldset>
             
             <fieldset class="include">
@@ -39,7 +48,7 @@
                 <input type="checkbox" name="exclude" id="gluten" class="exclude">
                 <label for="gluten">Gluten</label>
             </fieldset>
-            <button type="submit" class="apply">Apply</button>
+            <button type="button" class="apply">Apply</button>
         </form>
     </main>
 </body>

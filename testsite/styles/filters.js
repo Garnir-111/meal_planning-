@@ -37,7 +37,7 @@ function submit(event)
         urlParams.append('exclude', excludes);
     }
     // Construct the URL with the parameters
-    let url = "index.html" + '?' + urlParams.toString();
+    let url = "recipe.html" + '?' + urlParams.toString();
     window.location.href = url; // Navigate to the updated URL with parameters
 }
 document.querySelectorAll(".apply").forEach(button => {button.addEventListener('click', submit);});

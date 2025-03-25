@@ -10,3 +10,9 @@
 .menu.show {
     display: block;
 }
+
+body {
+    display:grid;
+    text-align: center;
+    grid-template-rows: repeat(5,1fr)
+}

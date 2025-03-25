@@ -16,9 +16,6 @@ h1, h2, h3, h4, h5 {
 }
 .menu.show {
     display: block;
-<<<<<<< HEAD
-}
-=======
 }
 .logo {
     width: 150px;
@@ -72,4 +69,3 @@ footer {
     padding-left: 25px;
     padding-right: 25px;
 }
->>>>>>> 860863b8cc2fa211da517def2a66b7ba86fd88e2

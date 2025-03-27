@@ -40,4 +40,21 @@ function submit(event)
     let url = "recipe.html" + '?' + urlParams.toString();
     window.location.href = url; // Navigate to the updated URL with parameters
 }
-document.querySelectorAll(".apply").forEach(button => {button.addEventListener('click', submit);});
+
+function set_macro_info()
+{
+    const carbs = document.querySelector("#carbsAmount");
+    const proteins = document.querySelector("#proteinsAmount");
+    const fats = document.querySelector("#fatsAmount");
+
+    const carbslider = document.querySelector("#carbs");
+    const proteinslider = document.querySelector("#proteins");
+    const fatslider = document.querySelector("#fats");
+
+    carbs.innerText = carbslider.value;
+    proteins.innerText = proteinslider.value;
+    fats.innerText = fatslider.value;
+}
+
+document.querySelectorAll(".macros > input").forEach(input => input.addEventListener("input", set_macro_info));
+document.querySelector(".apply").addEventListener('click', submit);

@@ -58,14 +58,14 @@ nav h1 {
     text-align: center;
 }
 .instruct {
-    padding-left: 500px;
-    padding-right: 500px;
+    padding-left: 25%;
+    padding-right: 25%;
     text-align: left;
 }
 footer {
     background: white;
     display: flex;
     justify-content: space-between;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
 }

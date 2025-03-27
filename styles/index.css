@@ -67,3 +67,12 @@ footer {
 footer p {
     color: #DBB3B1;
 }
+#filterButton {
+    background-color: #DBB3B1;
+    border: none;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+}

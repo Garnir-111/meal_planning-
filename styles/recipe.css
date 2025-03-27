@@ -25,6 +25,16 @@ header {
     align-items: center;
 }
 
+header a {
+    color: #2C1A1D;
+}
+
+nav h1 {
+    text-align: center;
+    color: #2C1A1D;
+    text-decoration: none;
+}
+
 #site-title {
  text-align: center;
  font-size: 70px;
@@ -34,25 +44,26 @@ header {
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 400px;
-    margin: auto;
+    max-width: 500px;
+    height: 60px;
+    margin: 20px auto;
     border: 2px solid #ccc;
     border-radius: 8px;
     padding: 5px;
     background-color: #fff;
+    overflow: hidden;
 }
 
 .search-box input {
     flex: 1;
     width: 100%;
-    padding: 12px;
-    font-size: 18px;
+    height: 100%;
+    font-size: 20px;
     border: none;
     outline: none;
-}
-
-.search-box input {
-    font-size: 16px;
+    padding: 0 15px;
+    background: none;
+    box-sizing: border-box;
 }
 
 .search-box button {
@@ -63,7 +74,7 @@ header {
     padding: 15px 32px;
     text-decoration: none;
     display: inline-flex;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 button {
@@ -75,6 +86,7 @@ button {
     text-decoration: none;
     display: flex;
     font-size: 16px;
+    margin: 0 auto;
 }
 
 .recipe-description {
@@ -137,4 +149,16 @@ nav {
     color: #f9f9f9;
     border-radius: 12px;
     box-shadow: 0 8px 12px darkslategray;
+}
+
+footer {
+    background: #CC6C6C;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+}
+
+footer p {
+    color: #DBB3B1;
 }

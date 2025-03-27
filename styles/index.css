@@ -27,9 +27,6 @@ nav h1 {
     color: #2C1A1D;
     text-decoration: none;
 }
-.logo {
-    width: 150px;
-}
 #filterbuttoncontainer {
     background: #2C1A1D;
     display: flex;
@@ -84,7 +81,7 @@ footer p {
 
 nav {
     width: 1600px;
-    margin: 10px auto;
+    margin: 0 auto;
     display: flex;
     font-size: 40px;
     text-decoration: none;
@@ -94,4 +91,7 @@ nav {
 .navitem {
     text-decoration: none;
     margin: 0 auto;
+}
+.navitem:hover {
+    color: white;
 }

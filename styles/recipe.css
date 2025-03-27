@@ -27,48 +27,65 @@ header {
 
 #site-title {
  text-align: center;
+ font-size: 70px;
 }
 
 .search-box {
- align-items: center;
-}
-
-button {
-
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 5px;
+    background-color: #fff;
 }
 
 .search-box input {
+    flex: 1;
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+}
 
+.search-box input {
+    font-size: 16px;
 }
 
 .search-box button {
-
+    background-color:#CC6C6C;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-flex;
+    font-size: 16px;
 }
 
-.recipe-container {
-
-}
-
-p {
-
-}
-
-#recipe-output {
-
-}
-
-#filterButton {
+button {
     background-color:#2C1A1D;
     color: white;
     border: none;
+    border-radius: 10px;
     padding: 15px 32px;
     text-decoration: none;
-    display: inline-block;
+    display: flex;
     font-size: 16px;
-    
 }
-#filterButton:hover {
+
+.recipe-description {
+    font-family: "Faculty Glyphic";
+    font-weight: 550;
+}
+
+
+button:hover {
     background-color: #DBB3B1;
+    color: white;
 }
 
 nav {
@@ -80,12 +97,44 @@ nav {
     align-items: center;
     justify-content: center;
 }
-
 .navitem {
     text-decoration: none;
     margin: 0 auto;
 }
-
 .navitem:hover {
     color: white;
+}
+
+.recipe-img {
+    width: 40%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.recipe {
+    flex: 1;
+}
+
+.recipe-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.recipe-paragraph, .recipe-time, .recipe-category, .recipe-description {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.recipe-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #CC6C6C;
+    color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 8px 12px darkslategray;
 }

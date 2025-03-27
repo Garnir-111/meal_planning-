@@ -25,6 +25,7 @@ header a {
 nav h1 {
     text-align: center;
     color: #2C1A1D;
+    text-decoration: none;
 }
 .logo {
     width: 150px;
@@ -79,4 +80,18 @@ footer p {
 }
 #filterButton:hover {
     background-color: #DBB3B1;
+}
+
+nav {
+    width: 1600px;
+    margin: 10px auto;
+    display: flex;
+    font-size: 40px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+}
+.navitem {
+    text-decoration: none;
+    margin: 0 auto;
 }

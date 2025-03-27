@@ -20,9 +20,8 @@ function submit(event)
     let urlParams = new URLSearchParams();
     let checkboxesInclude = document.querySelectorAll('.include input[type="checkbox"]:checked');
     let checkboxesExclude = document.querySelectorAll('.exclude input[type="checkbox"]:checked');
-    console.log(checkboxesExclude);
     
-    if(checkboxesinclude.length > 0) {
+    if(checkboxesInclude.length > 0) {
         let includes = "";
         checkboxesInclude.forEach(function (checkbox) {
             includes += checkbox.id + "," // Using id as the value
@@ -38,7 +37,7 @@ function submit(event)
         urlParams.append('exclude', excludes);
     }
     // Construct the URL with the parameters
-    let url = "filters.html" + '?' + urlParams.toString();
+    let url = "recipe.html" + '?' + urlParams.toString();
     window.location.href = url; // Navigate to the updated URL with parameters
 }
 

@@ -1,7 +1,21 @@
 const priceOutput = document.querySelector("#currentPriceRange");
 const minPrice = document.querySelector("#minPrice");
 const maxPrice = document.querySelector("#maxPrice");
+const allergens = ["Milk", "Eggs", "Fish", "Crustacean Shellfish", "Tree Nuts", "Peanuts", "Wheat", "Soybeans", "Sesame"];
 
+
+function setAlergens()
+{
+    const exclude = document.querySelector(".exclude");
+    allergens.forEach(allergen => {
+        const html = allergenTemplate(allergen);
+        exclude.insertAdjacentHTML("beforeend", html)});
+}
+function allergenTemplate(allergen)
+{
+    return `<input type="checkbox" name="exclude" id="${allergen}" class="exclude">
+               <label for="${allergen}">${allergen}</label>`
+}
 function setPriceRange() {
     console.log("called");
     if (maxPrice.value !== minPrice.value) {
@@ -37,7 +51,25 @@ function submit(event)
         urlParams.append('exclude', excludes);
     }
     // Construct the URL with the parameters
-    let url = "index.html" + '?' + urlParams.toString();
+    let url = "recipe.html" + '?' + urlParams.toString();
     window.location.href = url; // Navigate to the updated URL with parameters
 }
-document.querySelectorAll(".apply").forEach(button => {button.addEventListener('click', submit);});
+
+function set_macro_info()
+{
+    const carbs = document.querySelector("#carbsAmount");
+    const proteins = document.querySelector("#proteinsAmount");
+    const fats = document.querySelector("#fatsAmount");
+
+    const carbslider = document.querySelector("#carbs");
+    const proteinslider = document.querySelector("#proteins");
+    const fatslider = document.querySelector("#fats");
+
+    carbs.innerText = carbslider.value;
+    proteins.innerText = proteinslider.value;
+    fats.innerText = fatslider.value;
+}
+
+document.querySelectorAll(".macros > input").forEach(input => input.addEventListener("input", set_macro_info));
+document.querySelectorAll(".apply").forEach(button => button.addEventListener('click', submit));
+setAlergens();

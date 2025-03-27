@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="./filters.js" defer></script>
+    <script src="./styles/filters.js" defer></script>
     <title>Document</title>
     <link rel="stylesheet" href="styles/filters.css">
 
@@ -17,6 +17,7 @@
     </header>
     <main>
         <form>
+            
             <fieldset class="priceRange">
                 <h2>Price</h2>
                 <label for="minPrice">Min Price</label>
@@ -29,11 +30,15 @@
                 <h2>Macros</h2>
                 <label for="carbs">Carbohydrates</label>
                 <input name="carbs" type="range" id="carbs" min="0" max="400" step="10" value="0">
+                <p id="carbsAmount"></p>
                 <label for="proteins">proteins</label>
                 <input name="proteins" type="range" id="proteins" min="0" max="200" step="10" value="0">
+                <p id="proteinsAmount"></p>
                 <label for="fats">Fats</label>
                 <input name="fats" type="range" id="fats" min="0" max="100" step="10" value="0">
+                <p id="fatsAmount"></p>
             </fieldset>
+            
             <fieldset class="include">
                 <h2>Include</h2>
                 <input type="checkbox" name="include" id="chocolate" class="include">
@@ -43,8 +48,6 @@
             </fieldset>
             <fieldset class="exclude">
                 <h2>Exclude</h2>
-                <input type="checkbox" name="exclude" id="gluten" class="exclude">
-                <label for="gluten">Gluten</label>
             </fieldset>
             <button type="button" class="apply">Apply</button>
         </form>

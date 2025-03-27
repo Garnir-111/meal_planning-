@@ -5,51 +5,43 @@ p {
 h1, h2, h3, h4, h5 {
     font-family: "Faculty Glyphic";
 }
-.menu {
-    display: none;
-    position: absolute;
-    top: 50px;
-    left: 10px;
-    background: white;
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-.menu.show {
-    display: block;
-<<<<<<< HEAD
-}
-=======
-}
 .logo {
     width: 150px;
 }
-
 body {
     max-width: 1600px;
     margin: 0 auto;
-    background: grey;    
+    background: #A67F8E;    
 }
 header {
-    background: green;
+    background: #CC6C6C;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
+header a {
+    color: #2C1A1D;
+}
 nav h1 {
     text-align: center;
+    color: #2C1A1D;
 }
 .logo {
     width: 150px;
 }
-
 #filterbuttoncontainer {
-    background: orange;
+    background: #2C1A1D;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+#filterButton {
+    color: #2C1A1D;
+    background-color: #DBB3B1;
+}
 #content {
-    background: red;    
+    background: #A67F8E;
+    color: #2C1A1D;   
 }
 #content h1 {
     text-align: center;
@@ -61,15 +53,17 @@ nav h1 {
     text-align: center;
 }
 .instruct {
-    padding-left: 500px;
-    padding-right: 500px;
+    padding-left: 25%;
+    padding-right: 25%;
     text-align: left;
 }
 footer {
-    background: white;
+    background: #6C534E;
     display: flex;
     justify-content: space-between;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
 }
->>>>>>> 860863b8cc2fa211da517def2a66b7ba86fd88e2
+footer p {
+    color: #DBB3B1;
+}

@@ -33,10 +33,13 @@
                 <h2>Macros</h2>
                 <label for="carbs">Carbohydrates</label>
                 <input name="carbs" type="range" id="carbs" min="0" max="400" step="10" value="0">
+                <p id="carbsAmount"></p>
                 <label for="proteins">proteins</label>
                 <input name="proteins" type="range" id="proteins" min="0" max="200" step="10" value="0">
+                <p id="proteinsAmount"></p>
                 <label for="fats">Fats</label>
                 <input name="fats" type="range" id="fats" min="0" max="100" step="10" value="0">
+                <p id="fatsAmount"></p>
             </fieldset>
             
             <fieldset class="include">
@@ -48,8 +51,6 @@
             </fieldset>
             <fieldset class="exclude">
                 <h2>Exclude</h2>
-                <input type="checkbox" name="exclude" id="gluten" class="exclude">
-                <label for="gluten">Gluten</label>
             </fieldset>
             <button type="button" class="apply">Apply</button>
         </form>

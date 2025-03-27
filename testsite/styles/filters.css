@@ -19,6 +19,8 @@ form {
     border-style: solid;
     border-color: #C89FA3;
     color: #C89FA3;
+    border-radius: 5%;
+    padding: 25px;
 }
 
 /* .priceRange fieldset {

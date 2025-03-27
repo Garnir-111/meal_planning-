@@ -68,11 +68,15 @@ footer p {
     color: #DBB3B1;
 }
 #filterButton {
-    background-color: #DBB3B1;
+    background-color:#2C1A1D;
+    color: white;
     border: none;
     padding: 15px 32px;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     
+}
+#filterButton:hover {
+    background-color: #DBB3B1;
 }

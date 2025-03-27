@@ -1,38 +1,93 @@
 <?php
+session_start(); // Start the session at the beginning of the script
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $recipeName = $_POST["recipeName"];
-    $author = $_POST["author"];
-    $ingredients = $_POST["ingredients"];
-    $allergens = $_POST["allergens"];
+    $title = $_POST["title"];
+    $instructions = $_POST["instructions"];
+    $servings = $_POST["servings"];
+    $price = $_POST["price"];
+    $ingredients = explode(',', $_POST["ingredients"]);
+    $ingredients = array_map('trim', $ingredients);
+    $allergens = explode(',', $_POST["allergens"]);
+    $allergens = array_map('trim', $allergens);
+    $mealType = $_POST["meal_type"];
 
     try {
         require_once "dbh-inc.php";
-        // This line includes the database connection file, which contains the $pdo variable that we need to interact with the database.
 
-        $query = "INSERT INTO test (recipe_name, author, ingredients, allergens) VALUES (:recipeName, :author, :ingredients, :allergens);";
+        $pdo->beginTransaction(); // Start transaction
 
-        $stmt = $pdo->prepare($query);
+        $queryCheck = "SELECT COUNT(*) FROM recipe WHERE title = :title";
+        $stmtCheck = $pdo->prepare($queryCheck);
+        $stmtCheck->bindParam(":title", $title);
+        $stmtCheck->execute();
+        $titleExists = $stmtCheck->fetchColumn();
 
-        $stmt->bindParam(":recipeName", $recipeName);
-        $stmt->bindParam(":author", $author);
-        $stmt->bindParam(":ingredients", $ingredients);
-        $stmt->bindParam(":allergens", $allergens);
+        if ($titleExists == 0) {
+            $query = "INSERT INTO recipe (title, instructions, servings, price) VALUES (:title, :instructions, :servings, :price); INSERT INTO meal_time (title, meal_type) VALUES (:title, :mealType);";
 
-        $stmt->execute();
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(":title", $title);
+            $stmt->bindParam(":instructions", $instructions);
+            $stmt->bindParam(":servings", $servings);
+            $stmt->bindParam(":price", $price);
+            $stmt->bindParam(":mealType", $mealType);
+            $stmt->execute();
 
-        
+            // Prepare ingredient and allergen insert queries outside the loops
+            $ingredientInsertQuery = "INSERT INTO ingredients (ingredient) VALUES (:ingredient)";
+            $ingredientInsertStmt = $pdo->prepare($ingredientInsertQuery);
 
-        $pdo = null;
-        $stmt = null;
-        // This code prepares and executes an SQL query to insert the form data into the database. The query uses placeholders to prevent SQL injection attacks. After executing the query, the $pdo and $stmt variables are set to null to close the database connection and free up memory.
+            $ingredientRecipeQuery = "INSERT INTO ingredients_in_recipe (title, ingredient) VALUES (:title, :ingredient)";
+            $ingredientRecipeStmt = $pdo->prepare($ingredientRecipeQuery);
 
-        header("Location: ../index.php");
+            $allergenRecipeQuery = "INSERT INTO allergens_in_recipe (title, allergen) VALUES (:title, :allergen)";
+            $allergenRecipeStmt = $pdo->prepare($allergenRecipeQuery);
+
+            foreach ($ingredients as $ingredient) {
+                // Check if ingredient exists
+                $ingredientCheckQuery = "SELECT COUNT(*) FROM ingredients WHERE ingredient = :ingredient";
+                $ingredientCheckStmt = $pdo->prepare($ingredientCheckQuery);
+                $ingredientCheckStmt->bindParam(":ingredient", $ingredient);
+                $ingredientCheckStmt->execute();
+                $ingredientExists = $ingredientCheckStmt->fetchColumn();
+
+                if ($ingredientExists == 0) {
+                    // Insert new ingredient
+                    $ingredientInsertStmt->bindParam(":ingredient", $ingredient);
+                    $ingredientInsertStmt->execute();
+                }
+
+                // Insert ingredient into recipe
+                $ingredientRecipeStmt->bindParam(":title", $title);
+                $ingredientRecipeStmt->bindParam(":ingredient", $ingredient);
+                $ingredientRecipeStmt->execute();
+            }
+
+            foreach ($allergens as $allergen) {
+                // Insert allergen into recipe
+                $allergenRecipeStmt->bindParam(":title", $title);
+                $allergenRecipeStmt->bindParam(":allergen", $allergen);
+                $allergenRecipeStmt->execute();
+            }
+
+            $pdo->commit(); // Commit the transaction
+            $_SESSION['success_message'] = "Recipe added successfully!"; // Set success message
+
+        }
+        else {
+            $_SESSION['error_message'] = "Recipe with this title already exists."; // Set error message
+        }
+
+        header("Location: ../index.php"); // Return to index.php after successful execution
+        exit(); // Important: Stop further script execution after header redirect
     } catch (PDOException $e) {
-        die("Query failed: " . $e->getMessage());
+        $pdo->rollBack(); // Roll back the transaction on error
+        $_SESSION['error_message'] = "Error adding recipe: " . $e->getMessage(); // Set error message
+        die("Connection failed: " . $e->getMessage());
     }
-}
-else {
+} else {
     header("Location: ../index.php");
     exit();
 }
+?>

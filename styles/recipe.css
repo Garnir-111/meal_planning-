@@ -36,8 +36,13 @@ nav h1 {
 }
 
 #site-title {
+ background-color: #2C1A1D;
  text-align: center;
- font-size: 70px;
+ font-size: 35px;
+ color: #fff;
+ margin: 0;
+ margin-bottom: 50px;
+ padding: 35px;
 }
 
 .search-box {

@@ -1,7 +1,21 @@
 const priceOutput = document.querySelector("#currentPriceRange");
 const minPrice = document.querySelector("#minPrice");
 const maxPrice = document.querySelector("#maxPrice");
+const allergens = ["Milk", "Eggs", "Fish", "Crustacean Shellfish", "Tree Nuts", "Peanuts", "Wheat", "Soybeans", "Sesame"];
 
+
+function setAlergens()
+{
+    const exclude = document.querySelector(".exclude");
+    allergens.forEach(allergen => {
+        const html = allergenTemplate(allergen);
+        exclude.insertAdjacentHTML("beforeend", html)});
+}
+function allergenTemplate(allergen)
+{
+    return `<input type="checkbox" name="exclude" id="${allergen}" class="exclude">
+               <label for="${allergen}">${allergen}</label>`
+}
 function setPriceRange() {
     console.log("called");
     if (maxPrice.value !== minPrice.value) {
@@ -57,4 +71,5 @@ function set_macro_info()
 }
 
 document.querySelectorAll(".macros > input").forEach(input => input.addEventListener("input", set_macro_info));
-document.querySelector(".apply").addEventListener('click', submit);
+document.querySelectorAll(".apply").forEach(button => button.addEventListener('click', submit));
+setAlergens();

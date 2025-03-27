@@ -25,9 +25,7 @@ header a {
 nav h1 {
     text-align: center;
     color: #2C1A1D;
-}
-.logo {
-    width: 150px;
+    text-decoration: none;
 }
 #filterbuttoncontainer {
     background: #2C1A1D;
@@ -79,4 +77,21 @@ footer p {
 }
 #filterButton:hover {
     background-color: #DBB3B1;
+}
+
+nav {
+    width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    font-size: 40px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+}
+.navitem {
+    text-decoration: none;
+    margin: 0 auto;
+}
+.navitem:hover {
+    color: white;
 }

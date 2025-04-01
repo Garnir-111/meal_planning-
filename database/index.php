@@ -74,6 +74,143 @@
         input[type="number"] {
             padding-left: 5px; 
         }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            border: 2px solid black;
+            padding: 20px;
+        }
+        .back-button {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .range {
+            display: flex;
+            align-items: center;
+        }
+        .apply-button {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid black;
+            background: white;
+            cursor: pointer;
+        }
+        .apply-button:hover {
+            background: lightgray;
+        }
+
+        #header {
+            font-size: 1.5em;
+        }
+
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 37%;
+            font-size: 13px;
+        }
+
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse; /* Reverse order for proper selection */
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .star-rating input {
+            display: none; /* Hide radio buttons */
+        }
+
+        .star-rating label {
+            font-size: 30px;
+            color: gray;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .star-rating input:checked ~ label {
+            color: gold; /* Selects the clicked star and all previous stars */
+        }
+
+        #search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        #results {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #results li {
+            background: #f4f4f4;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #results li:hover {
+            background: #ddd;
+        }
+
+        #search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        #results {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #results li {
+            background: #f4f4f4;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #results li:hover {
+            background: #ddd;
+        }
+
+        .allergens-container, .allergens-search {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 10px; /* Space between items */
+            max-width: 600px; /* Adjust based on your layout */
+            margin: auto; /* Centering */
+        }
+
+        .allergen {
+            background: #f4f4f4;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Space between checkbox and text */
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -175,26 +312,27 @@
 
 <h1>Search Recipes</h1>
 
-<!-- <form action="search.php" method="post" id="searchForm">
-    <label for="search">Search:</label><br>
-    <input type="text" id="search" name="recipesearch" placeholder="Search..."><br><br>
-
-    <input type="submit" value="Search">
-</form> -->
-
 <form action="search.php" method="post" id="searchForm" class="container">
     <a href="#" class="back-button">⬅️ Back</a>
     <h2>Filters</h2>
 
     <h1>Price Range</h1>
     <div class="range">
-        <input type="range" min="1" max="3" step="1">
+        <input type="range" name="price" min="1" max="10" step="1">
     </div>
 
     <div class="range-labels">
         <span>$0-5</span>
         <span>$5-10</span>
         <span>$10-15</span>
+        <span>$15-20</span>
+        <span>$20-25</span>
+        <span>$25-30</span>
+        <span>$30-35</span>
+        <span>$35-40</span>
+        <span>$40-45</span>
+        <span>$45+</span>
+
     </div>
 
     <h1 id="header">Meal or Time of Day</h1>
@@ -204,49 +342,92 @@
         <input type="radio" id="includ2" name="meal" value="lunch"><label for="include2"> Lunch</label><br>
         <input type="radio" id="include3" name="meal" value="dinner"><label for="include3"> Dinner</label><br>
     </div>
-
-    <!-- <h1 id="header">Ingredients to Include</h1>
-    <div>
-        <input type="checkbox" id="include1"><label for="include1"> Ingredient 1</label><br>
-        <input type="checkbox" id="include2"><label for="include2"> Ingredient 2</label><br>
-        <input type="checkbox" id="include3"><label for="include3"> Ingredient 3</label><br>
-    </div> -->
-
-    <div class="allergens-container">
+    
+    <!-- <fieldset>
+            <legend>Allergens</legend>
+            <label>Select Allergens:</label>
+            <select id="allergens-filter" onchange="addAllergen()">
+                <option value="" disabled selected>Select an allergen</option>
+                <option value="Lactose">Lactose</option>
+                <option value="Eggs">Eggs</option>
+                <option value="Fish">Fish</option>
+                <option value="Crustacean shellfish">Crustacean Shellfish</option>
+                <option value="Tree nuts">Tree Nuts</option>
+                <option value="Peanuts">Peanuts</option>
+                <option value="Wheat">Wheat</option>
+                <option value="Soybeans">Soybeans</option>
+                <option value="Sesame">Sesame</option>
+            </select>
+            <div id="allergens-container-filter"></div>
+            <input type="hidden" name="allergens" id="allergens">
+        </fieldset> -->
+       <div class="allergens-container">
         <label class="allergen">
-            <input type="checkbox" name="allergen" value="milk"> Milk
+            <input type="checkbox" name="Lactose" value="Lactose"> Lactose
         </label>
         <label class="allergen">
-            <input type="checkbox" name="allergen" value="eggs"> Eggs
+            <input type="checkbox" name="Eggs" value="eggs"> Eggs
         </label>
         <label class="allergen">
-            <input type="checkbox" name="allergen" value="fish"> Fish
+            <input type="checkbox" name="Fish" value="fish"> Fish
         </label>
         <label class="allergen">
-            <input type="checkbox" name="allergen" value="shellfish"> Crustacean Shellfish
+            <input type="checkbox" name="Shellfish" value="Crustacean Shellfish"> Crustacean Shellfish
         </label>
         <label class="allergen">
-            <input type="checkbox" name="allergen" value="tree_nuts"> Tree Nuts
+            <input type="checkbox" name="Tree Nuts" value="tree_nuts"> Tree Nuts
         </label>
         <label class="allergen">
-            <input type="checkbox" name="allergen" value="peanuts"> Peanuts
+            <input type="checkbox" name="Peanuts" value="peanuts"> Peanuts
         </label>
         <label class="allergen">
-            <input type="checkbox" name="allergen" value="wheat"> Wheat
+            <input type="checkbox" name="Wheat" value="wheat"> Wheat
         </label>
         <label class="allergen">
-            <input type="checkbox" name="allergen" value="soybeans"> Soybeans
+            <input type="checkbox" name="SoyBeans" value="soybeans"> Soybeans
         </label>
         <label class="allergen">
-            <input type="checkbox" name="allergen" value="sesame"> Sesame
+            <input type="checkbox" name="Sesame" value="sesame"> Sesame
         </label>
     </div>
-    
-    <input type="text" id="search-bar" placeholder="Search for ingredients..." oninput="searchRecipes()">
+    </div>
+    <input type="text" id="search-bar" name="searchbar" placeholder="Search for ingredients...">
     <ul id="results"></ul>       
 
     <button class="apply-button">APPLY</button>
   </form>
+  <!-- <script>
+    function addAllergen() {
+        let select = document.getElementById("allergens-filter");
+        let selectedValue = select.value;
+        let container = document.getElementById("allergens-container-filter");
+
+        if (selectedValue) {
+            let existingAllergens = container.querySelectorAll("span");
+            for (let allergen of existingAllergens) {
+                if (allergen.textContent.replace(" ❌", "") === selectedValue) {
+                    return; // Prevent duplicates
+                }
+            }
+
+            let span = document.createElement("span");
+            span.textContent = selectedValue + " ";
+            let button = document.createElement("button");
+            button.textContent = "❌";
+            button.style.border = "none";
+            button.style.background = "transparent";
+            button.style.cursor = "pointer";
+            button.onclick = function () {
+                container.removeChild(span);
+                updateAllergens();
+            };
+            span.appendChild(button);
+            container.appendChild(span);
+            updateAllergens();
+        }
+        select.value = "";
+    }
+    </script> -->
 
 </body>
 </html>

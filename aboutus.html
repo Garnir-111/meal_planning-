@@ -5,6 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>I-MealPlan</title>
     <link rel="stylesheet" href="styles/index.css" />
+    <style>
+      .container {
+        position: relative;
+        width: 200px;
+      }
+      
+      .image {
+        opacity: 1;
+        display: block;
+        width: 100px;
+        height: 300px;
+        transition: .5s ease;
+        backface-visibility: hidden;
+      }
+      
+      .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      
+      .container:hover .image {
+        opacity: 0.3;
+      }
+      
+      .container:hover .middle {
+        opacity: 1;
+      }
+      
+      .text {
+        background-color: #6c534e;
+        color: white;
+        font-size: 16px;
+        padding: 10px 20px;
+      }
+
+      footer {
+    background: #6C534E;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    max-height: 200px;
+}
+
+      .footitem {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        margin: 0 15px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .copyyright{
+        float: bottom;
+      }
+      </style>
   </head>
   <header>
     <nav>
@@ -12,17 +76,50 @@
       <img src="images/new-logo.png" alt="Logo" class="logo" />
       <a class="navitem" href="recipe.html"><h2>Recipes</h2</a>
     </nav>
-  </header> 02
+  </header>
   <body>
-    
-    <div id="content">
-      
-    </div>
+<div class="container">
+  <img src="images/new-logo.png" alt="Killer Whales" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">I Meal Plan</div>
+  </div>
+</div>
+<div class="container">
+  <img src="images/new-logo.png" alt="Killer Quails" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">I Meal Plan</div>
+  </div>
+</div>
+<div class="container">
+  <img src="images/new-logo.png" alt="Super Snakes" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">I Meal Plan</div>
+  </div>
+</div>
+<div class="container">
+  <img src="images/new-logo.png" alt="Quiet Coyotes" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">I Meal Plan</div>
+  </div>
+</div>
+<div class="container">
+  <img src="images/new-logo.png" alt="7 Deadly Sins" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">I Meal Plan</div>
+  </div>
+</div>
+<div class="container">
+  <img src="images/saucy-goblin-shark.webp" alt="Saucy Goblin Sharks" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">I Meal Plan</div>
+  </div>
+</div>
   </body>
   <footer>
-    <p>&copy; 2025 I-MealPlan. All rights reserved.</p>
     <a class="footitem" href="aboutus.html"><h2>About Us</h2</a>
-    <a class="footitem" href="contactus.html"><h2>Contact Us</h2</a>
+      <a class="footitem" href="contactus.html"><h2>Contact Us</h2</a>
+    <p class="copyright">&copy; 2025 I-MealPlan. All rights reserved.</p>
+   
 
     <div id="socmedialinks">
       <a>
@@ -35,5 +132,9 @@
         <img src="images/instagram.png" alt="Instagram" target="_blank">
       </a>
     </div>
+    
   </footer>
 </html>
+
+
+

@@ -17,6 +17,14 @@ body {
     margin: 0 auto;
     background: #A67F8E;    
 }
+header a {
+    color: #2C1A1D;
+}
+nav h1 {
+    text-align: center;
+    color: #2C1A1D;
+    text-decoration: none;
+}
 
 header {
     background: #CC6C6C;
@@ -53,3 +61,11 @@ p {
 
 }
 
+@media screen and (max-width: 600px) {
+
+    header{
+        text-align: center;
+        color: black;
+    }
+
+}

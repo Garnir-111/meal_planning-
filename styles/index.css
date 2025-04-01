@@ -95,3 +95,41 @@ nav {
 .navitem:hover {
     color: white;
 }
+
+@media screen and (max-width: 600px) {
+
+
+    header{
+        width: 100%;
+    }
+    nav{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        text-align: center;
+    }
+
+   
+    .logo{
+        width: 100%
+    }
+
+    .navitem{
+        width: 100%;
+        font-size: .5em;
+        text-decoration: underline;
+    }
+
+    .instruct{
+        padding-left: 7.5%;
+        padding-right: 7.5%;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        text-align: center;
+    } 
+
+
+    #filterButton{
+       border: 5px solid;
+       border-color: white;
+    }
+  }

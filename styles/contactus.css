@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Playwrite+GB+J:ital,wght@0,100..400;1,100..400&display=swap'); 
+
+.content{
+    display: flex;
+    
+    
+}
+body{
+    background-color: #A67F8E;
+}
+
+header{
+    display:flex;
+    background: #CC6C6C;
+    padding: 20px 0;
+   
+    
+}
+.logo{
+    width: 150px;
+}
+nav {
+    width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    font-size: 40px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+}
+nav a {
+    text-decoration: none;
+    margin: 0 auto;
+    color: black;
+}
+nav a:hover {
+    color: white;
+}
+p {
+    font-family: "Playwrite GB J";
+}
+h1, h2, h3, h4, h5 {
+    font-family: "Faculty Glyphic";
+}
+main{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 100%;
+    
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+label {
+    flex: 1;
+    text-align: left;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+input, textarea, select {
+    flex: 2;
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+
+button{
+    background-color: #CC6C6C;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+footer {
+    background: #6C534E;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    
+    height: 100%;
+}
+footer a {
+    color: #DBB3B1;
+    text-decoration: none;
+}
+
+footer a:hover{
+    text-decoration: underline;
+    color: white;
+}
+
+
+
+

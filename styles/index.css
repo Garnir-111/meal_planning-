@@ -25,9 +25,7 @@ header a {
 nav h1 {
     text-align: center;
     color: #2C1A1D;
-}
-.logo {
-    width: 150px;
+    text-decoration: none;
 }
 #filterbuttoncontainer {
     background: #2C1A1D;
@@ -61,18 +59,42 @@ footer {
     background: #6C534E;
     display: flex;
     justify-content: space-between;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
 }
 footer p {
     color: #DBB3B1;
 }
 #filterButton {
-    background-color: #DBB3B1;
+    background-color:#2C1A1D;
+    color: white;
     border: none;
     padding: 15px 32px;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     
+}
+#filterButton:hover {
+    background-color: #DBB3B1;
+}
+
+nav {
+    width: 1600px;
+    margin: 0 auto; 
+    display: flex;
+    font-size: 40px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+}
+.navitem {
+    text-decoration: none;
+    margin: 0 auto;
+}
+.navitem:hover {
+    color: white;
+}
+.footchild {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
 }

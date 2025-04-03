@@ -59,8 +59,6 @@ footer {
     background: #6C534E;
     display: flex;
     justify-content: space-between;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
 }
 footer p {
     color: #DBB3B1;
@@ -81,7 +79,7 @@ footer p {
 
 nav {
     width: 1600px;
-    margin: 0 auto;
+    margin: 0 auto; 
     display: flex;
     font-size: 40px;
     text-decoration: none;
@@ -94,4 +92,9 @@ nav {
 }
 .navitem:hover {
     color: white;
+}
+.footchild {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
 }

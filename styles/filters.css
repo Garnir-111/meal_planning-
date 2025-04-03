@@ -2,15 +2,15 @@
 
 header {
     display: grid;
-    grid-template: repeat(1, 25px) / repeat(3, 1fr);
-    text-align: center;
+    grid-template: repeat(1, 1fr) / repeat(3, 1fr);
+    /* text-align: center; */
     width: 24%;
 }
 
 body {
     display: grid;
     place-items: center; /* Centers everything in the body */
-    height: 70vh; /* Full viewport height */
+    height: 100vh; /* Full viewport height */
     margin: 0;
     
 }
@@ -23,18 +23,30 @@ form {
     padding: 25px;
 }
 
-/* .priceRange fieldset {
-    border-style: solid;
-    border-color: #C89FA3;
-    
+
+.apply {
+  background-color: #C89FA3;
+  border: none;
+  color: #2C1A1D;
+  padding: 15px 30px;
+  text-align: center;
+  /* text-decoration: none; */
+  /* display: inline-block; */
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
-.include fieldset {
-    border-style: solid;
-    border-color: #C89FA3;
+.logo {
+    width: 100px;
 }
 
-.exclude fieldset {
-    border-style: solid;
-    border-color: #C89FA3;
-} */
+button {
+    border-radius: 5%;
+    height: 40%;
+   
+
+
+}
+
+

@@ -54,7 +54,7 @@ main{
 form {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
@@ -96,12 +96,10 @@ button{
 
 footer {
     background: #6C534E;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
-    
-    height: 100%;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
 }
 footer a {
     color: #DBB3B1;
@@ -113,6 +111,12 @@ footer a:hover{
     color: white;
 }
 
+#footchild {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    margin: 0 15px;
+}
 
 
 

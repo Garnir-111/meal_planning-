@@ -38,13 +38,15 @@ function handleSearchFromURL() {
 function recipeTemplate(recipe) {
     return `<main>
         <div class="recipe-container">
-            <img src="${recipe.image}" alt="Image of ${recipe.name} recipe" class="recipe-img" />
+            <img src="${recipe.image}" alt="Image of ${recipe.title} recipe" class="recipe-img" />
             <div class="recipe">
-                <h2 class="recipe-title">${recipe.name}</h2>
-                <p class="recipe-paragraph">Ingredients: ${recipe.ingredients.join(', ')}</p>
-                <p class="recipe-time">Time: ${recipe.time}</p>
-                <p class="recipe-category">Category: ${recipe.category}</p>
-                <p class="recipe-description">${recipe.description}</p>
+                <h2 class="recipe-title">${recipe.title}</h2>
+                <p class="recipe-paragraph">Instructions: ${recipe.instructions}</p>
+                <p class="recipe-servings">Servings: ${recipe.servings}</p>
+                <p class="recipe-price">Price: $${recipe.price}</p>
+                <p class="recipe-ingredients">Ingredients: ${recipe["Ingredients"]}</p>
+                <p class="recipe-allergens">Allergens: ${recipe["Allergens"]}</p>
+                <p class="recipe-meal-time">Meal Time: ${recipe["Meal Time"]}</p>
             </div>
         </div>
     </main>`;

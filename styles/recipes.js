@@ -51,10 +51,20 @@ function recipeTemplate(recipe) {
 }
 
 function filterRecipes(query) {
+    const terms = query.split(" ").filter(Boolean); // Split by space & remove empty entries
+    const includeTerms = terms.filter(term => !term.startsWith("-"));
+    const excludeTerms = terms.filter(term => term.startsWith("-")).map(term => term.substring(1)); // Remove '-' from exclude terms
+
     return recipes.filter(recipe => {
-        return recipe.name.toLowerCase().includes(query) || 
-               recipe.ingredients.join(' ').toLowerCase().includes(query) ||
-               recipe.category.toLowerCase().includes(query);
+        const recipeText = `${recipe.name} ${recipe.ingredients.join(' ')} ${recipe.category}`.toLowerCase();
+
+        // Must include at least one of the included terms
+        const includes = includeTerms.length === 0 || includeTerms.some(term => recipeText.includes(term));
+        
+        // Must NOT include any of the excluded terms
+        const excludes = excludeTerms.some(term => recipeText.includes(term));
+
+        return includes && !excludes;
     });
 }
 

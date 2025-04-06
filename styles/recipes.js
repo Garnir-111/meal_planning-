@@ -25,27 +25,20 @@ function searchHandler(e) {
 
 function handleSearchFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
-    const includeQuery = urlParams.get('include'); // Get included ingredients
-    const excludeQuery = urlParams.get('exclude'); // Get excluded ingredients
-
-    let filteredRecipes = recipes; // Start with all recipes
-
-    if (includeQuery) {
-        filteredRecipes = filterRecipes(filteredRecipes, includeQuery, true);
-    }
+    const query = urlParams.get('search');
     
-    if (excludeQuery) {
-        filteredRecipes = filterRecipes(filteredRecipes, excludeQuery, false);
+    if (query) {
+        const filteredRecipes = filterRecipes(query);
+        renderRecipes(filteredRecipes);
+    } else {
+        renderRecipes(recipes); // Show all recipes if no search query
     }
-
-    renderRecipes(filteredRecipes);
 }
-
 
 function recipeTemplate(recipe) {
     return `<main>
         <div class="recipe-container">
-        
+            <img src="${recipe.image}" alt="Image of ${recipe.title} recipe" class="recipe-img" />
             <div class="recipe">
                 <h2 class="recipe-title">${recipe.title}</h2>
                 <p class="recipe-paragraph">Instructions: ${recipe.instructions}</p>
@@ -77,20 +70,11 @@ function filterRecipes(query) {
     });
 }
 
-function filterRecipes(recipeList, query, isInclude) {
-    const keywords = query.toLowerCase().split(',').map(k => k.trim());
-
-    return recipeList.filter(recipe => {
-        const ingredients = recipe["Ingredients"].toLowerCase();
-
-        if (isInclude) {
-            return keywords.every(keyword => ingredients.includes(keyword)); // Must include all
-        } else {
-            return keywords.every(keyword => !ingredients.includes(keyword)); // Must exclude all
-        }
-    });
+function renderRecipes(recipeList) {
+    const recipeOutputElement = document.getElementById("recipe-output");
+    const recipesHTML = recipeList.map(recipe => recipeTemplate(recipe)).join("");
+    recipeOutputElement.innerHTML = recipesHTML;
 }
-
 
 // Initialize search from URL on page load
 window.addEventListener('DOMContentLoaded', handleSearchFromURL);

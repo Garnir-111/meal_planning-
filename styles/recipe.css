@@ -151,7 +151,7 @@ nav {
     margin-bottom: 8px;
 }
 
-.recipe-container {
+.recipe-card {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -210,5 +210,3 @@ footer p {
         text-align: center;    /* specify a height if you want vertical centering */
     }
 
->>>>>>> 70587426fa377ba0928e0fdb10cc885fe8b52403
-}

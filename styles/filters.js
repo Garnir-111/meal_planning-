@@ -59,21 +59,22 @@ function submit(event)
     let checkboxesInclude = document.querySelectorAll('.include input[type="checkbox"]:checked');
     let checkboxesExclude = document.querySelectorAll('.exclude input[type="checkbox"]:checked');
     
-    if(checkboxesInclude.length > 0) {
-        let includes = "";
-        checkboxesInclude.forEach(function (checkbox) {
-            includes += checkbox.id + "," // Using id as the value
+    if (checkboxesInclude.length > 0) {
+        let includesArray = [];
+        checkboxesInclude.forEach(checkbox => {
+            includesArray.push(checkbox.id);
         });
-        urlParams.append('include', includes);
+        urlParams.append('include', includesArray.join(','));
+    }    
+    
+    if (checkboxesExclude.length > 0) {
+        let excludesArray = [];
+        checkboxesExclude.forEach(checkbox => {
+            excludesArray.push(checkbox.id);
+        });
+        urlParams.append('exclude', excludesArray.join(','));
     }
     
-    if(checkboxesExclude.length > 0) {
-        let excludes = "";
-        checkboxesExclude.forEach(checkbox => {
-            excludes += checkbox.id + ",";
-        });
-        urlParams.append('exclude', excludes);
-    }
     // Construct the URL with the parameters
     let url = "recipe.html" + '?' + urlParams.toString();
     window.location.href = url; // Navigate to the updated URL with parameters

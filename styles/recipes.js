@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.querySelector("input[type='text']");
   const searchForm = document.querySelector(".search-box");
 
-  
   let query = ""; // Global search query
 
   fetch("styles/recipes.json")
@@ -12,10 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
       let recipes = data.recipes; // make sure recipes.json has a "recipes" array
 
       const urlParams = new URLSearchParams(window.location.search);
+      const includesRaw = urlParams.get("include");
+      const includes = includesRaw ? includesRaw.split(",").filter(val => val.trim() !== "") : [];
 
-      // Get filters from URL
-      const includes = urlParams.getAll("include");
-      const excludes = urlParams.getAll("exclude");
+      // Similarly for excludes:
+      const excludesRaw = urlParams.get("exclude");
+      const excludes = excludesRaw ? excludesRaw.split(",").filter(val => val.trim() !== "") : [];
+
       const allergens = urlParams.getAll("allergen");
       const mealTime = urlParams.get("mealTime");
       const minPrice = parseFloat(urlParams.get("min")) || 0;
@@ -25,29 +27,36 @@ document.addEventListener("DOMContentLoaded", () => {
       function filterRecipes() {
         return recipes
           .filter((recipe) => {
-            const includesOk = includes.every((ingredient) =>
-                recipe.ingredients?.toLowerCase().includes(ingredient.toLowerCase())
+            const includesOk = includes.every((ingredient) => {
+              const searchTerm = ingredient.toLowerCase();
+              return (
+                recipe.title?.toLowerCase().includes(searchTerm) ||
+                recipe.ingredients?.toLowerCase().includes(searchTerm)
               );
-              
-              const excludesOk = excludes.every((ingredient) =>
-                !recipe.ingredients?.toLowerCase().includes(ingredient.toLowerCase())
+            });
+
+            // Fixed excludes: use a single every call and the correct string method:
+            const excludesOk = excludes.every((ingredient) => {
+              const searchTerm = ingredient.toLowerCase();
+              return (
+                !recipe.title?.toLowerCase().includes(searchTerm) &&
+                !recipe.ingredients?.toLowerCase().includes(searchTerm)
               );
-              
-              const allergensOk = allergens.every((allergen) =>
-                !recipe.allergens?.toLowerCase().includes(allergen.toLowerCase())
-              );
-              
-              const mealTimeOk =
-                !mealTime ||
-                recipe.mealTime?.toLowerCase().includes(mealTime.toLowerCase());
-              
-              const price = parseFloat(recipe.price);
-              const priceOk = price >= minPrice && price <= maxPrice;
-              
-              const titleMatch = recipe.title?.toLowerCase().includes(query);
-              const ingredientsMatch =
-                recipe.ingredients?.toLowerCase().includes(query);
-              
+            });
+
+            const allergensOk = allergens.every((allergen) =>
+              !recipe.allergens?.toLowerCase().includes(allergen.toLowerCase())
+            );
+
+            const mealTimeOk =
+              !mealTime ||
+              recipe.mealTime?.toLowerCase().includes(mealTime.toLowerCase());
+
+            const price = parseFloat(recipe.price);
+            const priceOk = price >= minPrice && price <= maxPrice;
+
+            const titleMatch = recipe.title?.toLowerCase().includes(query);
+            const ingredientsMatch = recipe.ingredients?.toLowerCase().includes(query);
 
             return (
               (titleMatch || ingredientsMatch) &&
@@ -80,21 +89,20 @@ document.addEventListener("DOMContentLoaded", () => {
           const card = document.createElement("div");
           card.classList.add("recipe-card");
           card.innerHTML = `
-          <h3>${recipe.title}</h3>
-          <p><strong>Instructions:</strong> ${recipe.instructions}</p>
-          <p><strong>Serving:</strong> ${recipe.servings}</p>
-          <p><strong>Price:</strong> ${recipe.price}</p>
-          <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
-          <p><strong>Allergens:</strong> ${recipe.allergens}</p>
-          <p><strong>Meal Time:</strong> ${recipe.mealTime}</p>
-        `;        
+            <h3>${recipe.title}</h3>
+            <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+            <p><strong>Serving:</strong> ${recipe.servings}</p>
+            <p><strong>Price:</strong> ${recipe.price}</p>
+            <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
+            <p><strong>Allergens:</strong> ${recipe.allergens}</p>
+            <p><strong>Meal Time:</strong> ${recipe.mealTime}</p>
+          `;
           recipeOutput.appendChild(card);
         });
       }
 
       searchForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        // Debug logging:
         console.log("Search form submitted");
         query = searchInput.value.trim().toLowerCase();
         console.log("Query:", query);
@@ -108,7 +116,9 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => {
       console.error("Error loading recipes:", error);
-      recipeOutput.innerHTML =
-        "<p>Failed to load recipes. Please try again later.</p>";
+      if (recipeOutput) {
+        recipeOutput.innerHTML =
+          "<p>Failed to load recipes. Please try again later.</p>";
+      }
     });
 });

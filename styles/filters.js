@@ -2,18 +2,6 @@ const priceOutput = document.querySelector("#currentPriceRange");
 const minPrice = document.querySelector("#minPrice");
 const maxPrice = document.querySelector("#maxPrice");
 const allergens = ["Milk", "Eggs", "Fish", "Crustacean Shellfish", "Tree Nuts", "Peanuts", "Wheat", "Soybeans", "Sesame"];
-const ingredients  = [
-    "Chicken",
-    "Beef",
-    "Tofu",
-    "Milk",
-    "Cheese",
-    "Carrots",
-    "Spinach",
-    "Apples",
-    "Rice",
-    "Olive Oil"
-];
 
 
 function setAlergens()
@@ -23,21 +11,9 @@ function setAlergens()
         const html = allergenTemplate(allergen);
         exclude.insertAdjacentHTML("beforeend", html)});
 }
-function setIngredients()
-{
-    const include = document.querySelector(".include");
-    ingredients.forEach(allergen => {
-        const html = includeTemplate(allergen);
-        include.insertAdjacentHTML("beforeend", html)});
-}
 function allergenTemplate(allergen)
 {
     return `<input type="checkbox" name="exclude" id="${allergen}" class="exclude">
-               <label for="${allergen}">${allergen}</label>`
-}
-function includeTemplate(allergen)
-{
-    return `<input type="checkbox" name="include" id="${allergen}" class="include">
                <label for="${allergen}">${allergen}</label>`
 }
 function setPriceRange() {
@@ -98,4 +74,3 @@ function set_macro_info()
 document.querySelectorAll(".macros > input").forEach(input => input.addEventListener("input", set_macro_info));
 document.querySelectorAll(".apply").forEach(button => button.addEventListener('click', submit));
 setAlergens();
-setIngredients();

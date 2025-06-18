@@ -1,9 +1,6 @@
 # meal_planning-
 
-Go to this site 
-garnir-111.github.io/meal_planning-/
-
-or this
+This is a link to the finished product
 https://mealplanning.altervista.org/
 
 # Use
